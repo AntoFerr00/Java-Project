@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>personal-budgeting-tool</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Personal Budgeting Tool</name>
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <!-- JavaFX version -->
+    <javafx.version>19</javafx.version>
+  </properties>
+
+  <dependencies>
+    <!-- JavaFX Controls dependency -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+      <!-- Maven Exec Plugin to launch the JavaFX app -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <mainClass>com.example.personalbudget.Main</mainClass>
+          <!-- Pass module arguments for JavaFX -->
+          <commandlineArgs>--module-path ${env.JAVAFX_HOME} --add-modules javafx.controls</commandlineArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
